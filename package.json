@@ -1,0 +1,16 @@
+{
+  "name": "project-poll-app",
+  "version": "1.0.0",
+  "main": "./server/src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm i && npm run build",
+    "build:server": "cd server && npm i",
+    "start": "cd server && node src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
