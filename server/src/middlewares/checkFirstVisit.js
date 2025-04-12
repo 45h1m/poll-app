@@ -1,8 +1,20 @@
 const visitorIPs = new Map();
 
+const normalizeIP = (ip) => {
+    // Check if IPv6 format like ::ffff:192.168.1.1
+    if (ip.startsWith('::ffff:')) {
+      // Extract the IPv4 part
+      return ip.substring(7);
+    }
+    return ip;
+  };
+  
+
 const checkFirstTimeVisitor = (req, res, next) => {
-    const userIP = req.ip;
+    const userIP = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
     const id = req.params.id;
+
+    console.log(userIP, id);
 
     if (visitorIPs.has(userIP + id)) {
 
